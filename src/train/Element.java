@@ -30,6 +30,10 @@ public abstract class Element {
 		
 		this.railway = r;
 	}
+	
+	public Element nextElement(Position pos) {
+		return this.railway.nextElement(pos);
+	}
 
 	@Override
 	public String toString() {

@@ -26,7 +26,7 @@ public class Train {
 			throw new NullPointerException();
 
 		// A train should be first be in a station
-		if (!(p.getPos() instanceof Station))
+		if (!(p.getElement() instanceof Station))
 			throw new BadPositionForTrainException(name);
 
 		this.name = name;
@@ -44,7 +44,7 @@ public class Train {
 	}
 	
 	public Element getElement() {
-		return this.pos.getPos();
+		return this.pos.getElement();
 	}
 	
 	public Element nextElement() {
