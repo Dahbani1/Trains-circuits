@@ -17,7 +17,7 @@ package train;
  * @author Philippe Tanguy <philippe.tanguy@imt-atlantique.fr>
  * @version 0.3
  */
-public class Train {
+public class Train implements Runnable {
 	private final String name;
 	private  Position pos;
 
@@ -55,5 +55,10 @@ public class Train {
 		this.pos.setElement(this.nextElement());
 	}
 	
-	
+
+	public void run() {
+		while(true) {
+			this.move();
+		}
+	}
 }
