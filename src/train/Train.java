@@ -50,7 +50,10 @@ public class Train {
 	public Element nextElement() {
 		return this.getElement().nextElement(pos);
 	}
+	
 	public void move() {
 		this.pos.setElement(this.nextElement());
 	}
+	
+	
 }
