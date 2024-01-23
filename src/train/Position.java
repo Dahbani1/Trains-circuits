@@ -21,13 +21,13 @@ package train;
  */
 public class Position implements Cloneable {
 	private  Direction direction;
-	private  Element pos;
+	private  Element element;
 
 	public Position(Element elt, Direction d) {
 		if (elt == null || d == null)
 			throw new NullPointerException();
 
-		this.pos = elt;
+		this.element = elt;
 		this.direction = d;
 	}
 
@@ -41,23 +41,29 @@ public class Position implements Cloneable {
 		}
 	}
 
-	public Element getPos() {
-		return pos;
+	public Element getElement() {
+		return element;
+	}
+	
+	public Direction getDirection() {
+		return direction;
 	}
 
 	@Override
 	public String toString() {
-		StringBuilder result = new StringBuilder(this.pos.toString());
+		StringBuilder result = new StringBuilder(this.element.toString());
 		result.append(" going ");
 		result.append(this.direction);
 		return result.toString();
 	}
 	
 	public void setElement(Element elt) {
-		this.pos=elt;	
+		this.element = elt;	
 	}
 	
 	public void setDirection(Direction d) {
-		this.direction=d;	
+		this.direction = d;	
 	}
+	
+	
 }
