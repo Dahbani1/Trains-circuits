@@ -19,7 +19,7 @@ package train;
  */
 public class Train {
 	private final String name;
-	private final Position pos;
+	private  Position pos;
 
 	public Train(String name, Position p) throws BadPositionForTrainException {
 		if (name == null || p == null)
@@ -41,5 +41,16 @@ public class Train {
 		result.append(" is on ");
 		result.append(this.pos);
 		return result.toString();
+	}
+	
+	public Element getElement() {
+		return this.pos.getPos();
+	}
+	
+	public Element nextElement() {
+		return this.getElement().nextElement(pos);
+	}
+	public void move() {
+		this.pos.setElement(this.nextElement());
 	}
 }
