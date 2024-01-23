@@ -42,14 +42,14 @@ public class Railway {
 			if(this.elements[i] == currElement) {			
 				if(currDirection == Direction.LR) {
 					if(i == this.elements.length - 1) {
-						currDirection.turn();
+						pos.turn();
 						return this.elements[i - 1];
 					} else {
 						return this.elements[i + 1];
 					}
 				} else {
 					if(i == 0) {
-						currDirection.turn();
+						pos.turn();
 						return this.elements[i + 1];
 					} else {
 						return this.elements[i - 1];
