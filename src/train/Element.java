@@ -16,6 +16,8 @@ package train;
 public abstract class Element {
 	private final String name;
 	protected Railway railway;
+	private int trains;
+	private int size;
 
 	protected Element(String name) {
 		if(name == null)
@@ -33,6 +35,10 @@ public abstract class Element {
 	
 	public Element nextElement(Position pos) {
 		return this.railway.nextElement(pos);
+	}
+	
+	public boolean isFull() {
+		return trains == size;
 	}
 
 	@Override
