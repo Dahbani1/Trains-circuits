@@ -1,5 +1,5 @@
 # TP Train (TP 11 - 15)
-_Groupe composé de XXX xxx, YYY yyy._
+_Groupe composé de Mohammed Dahbani, Anas Ezzakri
 
 ## Introduction
 Ce projet s'inscrit dans le cadre du cours sur les logiciels concurrents. Il consiste en la modélisation en Java du déplacement de trains sur des rails.
