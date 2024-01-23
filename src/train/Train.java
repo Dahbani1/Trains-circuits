@@ -17,7 +17,7 @@ package train;
  * @author Philippe Tanguy <philippe.tanguy@imt-atlantique.fr>
  * @version 0.3
  */
-public class Train implements Runnable {
+public class Train  {
 	private final String name;
 	private  Position pos;
 
