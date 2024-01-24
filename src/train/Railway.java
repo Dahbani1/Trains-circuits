@@ -10,7 +10,8 @@ package train;
  */
 public class Railway {
 	private final Element[] elements;
-	
+	private Direction railwayDirection;
+	private int railwayTrains;
 
 	public Railway(Element[] elements) {
 		if(elements == null)
@@ -60,4 +61,6 @@ public class Railway {
 		}
 		return null;
 	}
+	
+	
 }
