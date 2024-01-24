@@ -5,8 +5,8 @@ package train;
  */
 public class Main {
 	public static void main(String[] args) {
-		Station A = new Station("GareA", 3,2);
-		Station D = new Station("GareD", 3, 1);
+		Station A = new Station("GareA", 3,3);
+		Station D = new Station("GareD", 3, 0);
 		Section AB = new Section("AB");
 		Section BC = new Section("BC");
 		Section CD = new Section("CD");
@@ -18,7 +18,9 @@ public class Main {
 			Train t1 = new Train("1", p);
 			t1.run();
 			Train t2 = new Train("2", p);
+			t2.run();
 			Train t3 = new Train("3", p);
+			t3.run();
 			System.out.println(t1);
 			System.out.println(t2);
 			System.out.println(t3);
