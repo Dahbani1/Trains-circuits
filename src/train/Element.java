@@ -17,13 +17,14 @@ public abstract class Element {
 	private final String name;
 	protected Railway railway;
 	private int size;
-	private int trains;
+	public int trains;
 
 	protected Element(String name) {
 		if(name == null)
 			throw new NullPointerException();
 		
 		this.name = name;
+		
 	}
 
 	public void setRailway(Railway r) {
@@ -56,6 +57,8 @@ public abstract class Element {
 	
 		
 	}
+	
+	
 
 	@Override
 	public String toString() {

@@ -10,11 +10,13 @@ package train;
  */
 public class Station extends Element {
 	private final int size;
+	private int trains;
 
-	public Station(String name, int size) {
+	public Station(String name, int size, int trains) {
 		super(name);
 		if(name == null || size <=0)
 			throw new NullPointerException();
 		this.size = size;
+		this.trains=trains;
 	}
 }
