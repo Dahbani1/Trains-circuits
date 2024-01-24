@@ -51,19 +51,23 @@ public abstract class Element {
 		return this.trains == this.size;
 	}
 	
-	public synchronized void notifyTrains() {
+	public synchronized void notifyTrains(Train t) {
+		this.decrementTrains();
+		t.getPosition().setElement(t.nextElement());
 		notifyAll();
 	}
 	
 	public synchronized void allowTrain(Train t) {
-		while (this.isFull()) {
+		Direction trainDirection = t.getPosition().getDirection();
+		while (this.isFull() || (this.railway.railwayDirection != null & this.railway.railwayDirection != trainDirection)) {
 			try {
 				wait();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-		t.moveToNextElement();
+		this.incrementTrains();
+		notifyAll();
 	}
 	
 	

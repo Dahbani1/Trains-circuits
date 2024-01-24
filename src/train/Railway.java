@@ -10,8 +10,8 @@ package train;
  */
 public class Railway {
 	private final Element[] elements;
-	private Direction railwayDirection;
-	private int railwayTrains;
+	public Direction railwayDirection;
+	public int railwayTrains;
 
 	public Railway(Element[] elements) {
 		if(elements == null)
@@ -20,6 +20,8 @@ public class Railway {
 		this.elements = elements;
 		for (Element e : elements)
 			e.setRailway(this);
+		this.railwayDirection = null;
+		this.railwayTrains = 0;
 	}
 
 	@Override

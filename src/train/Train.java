@@ -47,28 +47,22 @@ public class Train implements Runnable {
 		return this.pos.getElement();
 	}
 	
+	public Position getPosition() {
+		return this.pos;
+	}
+	
 	public Element nextElement() {
 		return this.getElement().nextElement(pos);
 	}
 	
-	public void moveToNextElement() {
-		Element nxtElement = this.nextElement();
-		Element currElement = this.getElement();
-		nxtElement.incrementTrains();
-		currElement.decrementTrains();
-		
-		currElement.notifyTrains();
-		this.pos.setElement(nxtElement);
-//		System.out.println(this + "\n");
-	}
-	
 	public void move() {
 		Element nxtElement = this.nextElement();
+		Element currElement = this.getElement();
 		nxtElement.allowTrain(this);
+		currElement.notifyTrains(this);
+		System.out.println("\n"+this);
 	}
 	
-	
-
 	public void run() {
 		while(true) {
 			this.move();

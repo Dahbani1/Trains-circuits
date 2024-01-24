@@ -15,4 +15,48 @@ public class Station extends Element {
 		if(name == null || size <=0)
 			throw new NullPointerException();
 	}
+	
+//	@Override
+//	public synchronized void allowTrain(Train t) {
+//		while (this.isFull()) {
+//			try {
+//				wait();
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		t.moveToNextElement();
+//	}
+	
+	@Override
+	public synchronized void notifyTrains(Train t) {
+		Direction trainDirection = t.getPosition().getDirection();
+		while(this.railway.railwayDirection != null & this.railway.railwayDirection != trainDirection) {
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		this.decrementTrains();
+		t.getPosition().setElement(t.nextElement());
+		this.railway.railwayDirection = trainDirection;
+		this.railway.railwayTrains++;
+		notifyAll();
+	}
+	
+	@Override
+	public synchronized void allowTrain(Train t) {
+		while (this.isFull()) {
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		this.incrementTrains();
+		this.railway.railwayTrains--;
+		this.railway.railwayDirection = this.railway.railwayTrains==0 ? null : this.railway.railwayDirection;
+		notifyAll();
+	}
 }
