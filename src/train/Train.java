@@ -52,9 +52,11 @@ public class Train  {
 	}
 	
 	public void move() {
+		this.getElement().getTrain();
 		this.pos.setElement(this.nextElement());
 //		System.out.println(this.pos+"\n");
 	}
+	
 	
 
 	public void run() {
