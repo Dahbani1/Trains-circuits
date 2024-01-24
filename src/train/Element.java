@@ -17,14 +17,23 @@ public abstract class Element {
 	private final String name;
 	protected Railway railway;
 	private int size;
-	public int trains;
+	private int trains;
 
-	protected Element(String name) {
+	protected Element(String name, int size, int trains) {
 		if(name == null)
 			throw new NullPointerException();
 		
 		this.name = name;
-		
+		this.size = size;
+		this.trains = trains;
+	}
+	
+	public int getTrains() {
+		return this.trains;
+	}
+	
+	public void setTrains(int t) {
+		this.trains = t;
 	}
 
 	public void setRailway(Railway r) {
@@ -39,10 +48,10 @@ public abstract class Element {
 	}
 	
 	public boolean isFull() {
-		return this.trains == size;
+		return this.trains == this.size;
 	}
 	
-	public synchronized void getTrain() {
+	public synchronized void allowTrain() {
 		while (this.isFull()) {
 			try {
 				wait();
