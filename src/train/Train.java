@@ -57,16 +57,14 @@ public class Train implements Runnable {
 		nxtElement.incrementTrains();
 		currElement.decrementTrains();
 		
-		nxtElement.notifyTrains();
 		currElement.notifyTrains();
 		this.pos.setElement(nxtElement);
+//		System.out.println(this + "\n");
 	}
 	
 	public void move() {
 		Element nxtElement = this.nextElement();
 		nxtElement.allowTrain(this);
-		
-		System.out.println(this + "\n");
 	}
 	
 	
