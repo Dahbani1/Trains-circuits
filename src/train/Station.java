@@ -17,4 +17,6 @@ public class Station extends Element {
 			throw new NullPointerException();
 		this.size = size;
 	}
+	
+	
 }
