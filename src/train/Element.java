@@ -28,12 +28,12 @@ public abstract class Element {
 		this.trains = trains;
 	}
 	
-	public int getTrains() {
-		return this.trains;
+	public void decrementTrains() {
+		this.trains--;
 	}
 	
-	public void setTrains(int t) {
-		this.trains = t;
+	public void incrementTrains() {
+		this.trains++;
 	}
 
 	public void setRailway(Railway r) {
@@ -51,20 +51,19 @@ public abstract class Element {
 		return this.trains == this.size;
 	}
 	
-	public synchronized void allowTrain() {
+	public synchronized void notifyTrains() {
+		notifyAll();
+	}
+	
+	public synchronized void allowTrain(Train t) {
 		while (this.isFull()) {
 			try {
 				wait();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			}
-		this.trains++;
-
-		notifyAll();
-	
-		
+		}
+		t.moveToNextElement();
 	}
 	
 	

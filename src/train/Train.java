@@ -51,13 +51,22 @@ public class Train implements Runnable {
 		return this.getElement().nextElement(pos);
 	}
 	
-	public void move() {
+	public void moveToNextElement() {
 		Element nxtElement = this.nextElement();
 		Element currElement = this.getElement();
-		nxtElement.allowTrain();
-		currElement.setTrains(currElement.getTrains() - 1);
-		this.pos.setElement(this.nextElement());
-		System.out.println(this.name + "in " + this.pos + "\n");
+		nxtElement.incrementTrains();
+		currElement.decrementTrains();
+		
+		nxtElement.notifyTrains();
+		currElement.notifyTrains();
+		this.pos.setElement(nxtElement);
+	}
+	
+	public void move() {
+		Element nxtElement = this.nextElement();
+		nxtElement.allowTrain(this);
+		
+		System.out.println(this + "\n");
 	}
 	
 	
