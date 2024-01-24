@@ -65,7 +65,7 @@ public class Position implements Cloneable {
 		this.direction = d;	
 	}
 	
-	public void turn() {
+	public synchronized void turn() {
 		this.direction = this.direction.turn();
 	}
 }
