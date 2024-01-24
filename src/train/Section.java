@@ -8,10 +8,7 @@ package train;
  * @author Philippe Tanguy <philippe.tanguy@imt-atlantique.fr>
  */
 public class Section extends Element {
-	private int size;
-	
 	public Section(String name) {
 		super(name);
-		size = 1;
 	}
 }

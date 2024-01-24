@@ -10,7 +10,7 @@ package train;
  */
 public class Railway {
 	private final Element[] elements;
-	
+
 	public Railway(Element[] elements) {
 		if(elements == null)
 			throw new NullPointerException();

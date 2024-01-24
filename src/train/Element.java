@@ -1,7 +1,5 @@
 package train;
 
-import java.util.ArrayList;
-
 /**
  * Cette classe abstraite est la représentation générique d'un élément de base d'un
  * circuit, elle factorise les fonctionnalitÃ©s communes des deux sous-classes :
@@ -18,16 +16,12 @@ import java.util.ArrayList;
 public abstract class Element {
 	private final String name;
 	protected Railway railway;
-	private int trains;
-	private int size;
 
 	protected Element(String name) {
 		if(name == null)
 			throw new NullPointerException();
 		
 		this.name = name;
-		this.trains = 0;
-	
 	}
 
 	public void setRailway(Railway r) {
@@ -39,24 +33,6 @@ public abstract class Element {
 	
 	public Element nextElement(Position pos) {
 		return this.railway.nextElement(pos);
-	}
-	
-	public boolean isFull() {
-		return trains == size;
-	}
-	
-	public synchronized void getTrain() {
-		while (this.isFull()) {
-			try {
-				wait();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			}
-		this.trains++;
-		
-		notifyAll();
 	}
 
 	@Override
