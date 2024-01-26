@@ -66,6 +66,11 @@ public class Train implements Runnable {
 	public void run() {
 		while(true) {
 			this.move();
+			try {
+			    Thread.sleep(1);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

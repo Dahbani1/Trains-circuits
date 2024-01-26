@@ -69,10 +69,6 @@ public abstract class Element {
 		this.incrementTrains();
 		notifyAll();
 	}
-	
-	
-	
-	
 
 	@Override
 	public String toString() {
