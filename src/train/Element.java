@@ -59,7 +59,7 @@ public abstract class Element {
 	
 	public synchronized void allowTrain(Train t) {
 		Direction trainDirection = t.getPosition().getDirection();
-		while (this.isFull() || (this.railway.railwayDirection != null & this.railway.railwayDirection != trainDirection)) {
+		while(this.isFull() || ((this.railway.railwayDirection != null & this.railway.railwayDirection != trainDirection) || (this.nextStation(t.getPosition()).willBeFull() & (t.getPosition().getElement() instanceof Station)))) {
 			try {
 				wait();
 			} catch (InterruptedException e) {
@@ -74,4 +74,19 @@ public abstract class Element {
 	public String toString() {
 		return this.name;
 	}
+	
+	public int getTrains() {
+		return this.trains;
+	}
+	
+	public int getSize() {
+		return this.size;
+	}
+	
+	public Station nextStation(Position pos) {
+		return this.railway.nextStation(pos);
+	}
+	
+	
+	
 }

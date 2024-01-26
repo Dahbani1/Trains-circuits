@@ -30,10 +30,20 @@ public class Station extends Element {
 //		t.moveToNextElement();
 //	}
 	
+	
+	@Override
+	public boolean isFull() {
+		return false;
+	}
+	
+	public boolean willBeFull() {
+		return this.getTrains() == this.getSize();
+	}
+	
 	@Override
 	public synchronized void notifyTrains(Train t) {
 		Direction trainDirection = t.getPosition().getDirection();
-		while(this.railway.railwayDirection != null & this.railway.railwayDirection != trainDirection) {
+		while((this.railway.railwayDirection != null & this.railway.railwayDirection != trainDirection) || this.nextStation(t.getPosition()).willBeFull()) {
 			try {
 				wait();
 			} catch (InterruptedException e) {
@@ -44,6 +54,7 @@ public class Station extends Element {
 		t.getPosition().setElement(t.nextElement());
 		this.railway.railwayDirection = trainDirection;
 		this.railway.railwayTrains++;
+		this.nextStation(t.getPosition()).incrementTrains();
 		notifyAll();
 	}
 	
@@ -56,7 +67,7 @@ public class Station extends Element {
 				e.printStackTrace();
 			}
 		}
-		this.incrementTrains();
+		
 		this.railway.railwayTrains--;
 		this.railway.railwayDirection = this.railway.railwayTrains==0 ? null : this.railway.railwayDirection;
 		notifyAll();

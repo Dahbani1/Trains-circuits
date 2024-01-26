@@ -6,13 +6,13 @@ package train;
 public class Main {
 	public static void main(String[] args) {
 
-		Station A = new Station("GareA", 10, 10);
-		Station D = new Station("GareD", 10, 0);
+		Station A = new Station("GareA", 3, 3);
+		Station D = new Station("GareD", 2, 0);
 
 		Section AB = new Section("AB");
 		Section BC = new Section("BC");
 		Section CD = new Section("CD");
-		Railway r = new Railway(new Element[] { A, AB, BC, CD, D });
+		Railway r = new Railway(new Element[] { A, AB, BC, CD, D }, new Station[] { A, D });
 		System.out.println("The railway is:");
 		System.out.println("\t" + r);
 		Position p = new Position(A, Direction.LR);
@@ -32,7 +32,7 @@ public class Main {
 //			tr1.start();
 //			tr2.start();
 //			tr3.start();
-		    for (int i = 1; i <= 10; i++) {
+		    for (int i = 1; i <= 3; i++) {
 		        Train t = new Train(Integer.toString(i), p);
 		        System.out.println(t);
 		        Thread tr = new Thread(t);

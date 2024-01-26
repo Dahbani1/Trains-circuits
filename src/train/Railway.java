@@ -10,10 +10,11 @@ package train;
  */
 public class Railway {
 	private final Element[] elements;
+	private final Station[] stations;
 	public Direction railwayDirection;
 	public int railwayTrains;
 
-	public Railway(Element[] elements) {
+	public Railway(Element[] elements, Station[] stations) {
 		if(elements == null)
 			throw new NullPointerException();
 		
@@ -22,6 +23,7 @@ public class Railway {
 			e.setRailway(this);
 		this.railwayDirection = null;
 		this.railwayTrains = 0;
+		this.stations=stations;
 	}
 
 	@Override
@@ -63,6 +65,49 @@ public class Railway {
 		}
 		return null;
 	}
+	
+	public Station nextStation(Station stat) {
+		int a =0;
+		for (int i = 0; i <= this.stations.length-1; i++) {
+			if(stat==this.stations[i]) {
+				 a =i;
+				 break;
+			}
+		}
+		
+		
+		return this.stations[(a+1)%(this.stations.length)];
+		
+	}
+	
+	public Station nextStation(Position pos) {
+			
+			Element currElement = pos.getElement();
+			Direction currDirection = pos.getDirection();
+			
+			for(int i=0; i<this.elements.length; i++) {
+				if(this.elements[i] == currElement) {			
+					if(currDirection == Direction.LR) {
+						if(i == this.elements.length - 1) {
+							pos.turn();
+							return ((Station)this.elements[0]);
+						} else {
+							return ((Station)this.elements[this.elements.length - 1]);
+						}
+					} else {
+						if(i == 0) {
+							pos.turn();
+							return ((Station)this.elements[this.elements.length - 1]);
+						} else {
+							return ((Station)this.elements[0]);
+						}
+					}
+				}
+			}
+			return null;
+		}
+		
+			
 	
 	
 }
