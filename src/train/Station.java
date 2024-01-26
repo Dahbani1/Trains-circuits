@@ -16,6 +16,8 @@ public class Station extends Element {
 			throw new NullPointerException();
 	}
 	
+	
+	
 //	@Override
 //	public synchronized void allowTrain(Train t) {
 //		while (this.isFull()) {
