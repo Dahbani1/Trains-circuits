@@ -163,5 +163,19 @@ Explication: Comme expliqué au dessus, la méthode notifyTrains principalement 
 
 ## Partie 4: Pour aller plus loin (Ajout de n gares intermédiaires)
 
+Le but de cette partie est d’ajouter une gare intermédiaire au milieu d’une suite de sections.
+Une telle gare permet à des trains de se croiser.
 
+#### Question 4.1 : Modifiez votre code pour permettre d’ajouter des gares intermédiaires.
+Voir code Gare-Intermediaire.zip
+
+1. **Ajout de la classe StationIntermediaire :**
+   - Créeation d'une nouvelle classe `StationInter` qui étend la classe `Station`. Cette classe hérite les memes methodes dela classe 'Station', nous pouvons dire que la station intermédiaire se comporte comme une section à plusieurs quai, cad le train ne tourne pas (ne change pas de direction) à son arrivée à ces gares intermédiaire (comme les sections), mais ces gares peuvent aussi acceuillir plusieurs trains selon le nombre de quai.
+   - Le meme principe appliqué  entre deux gares dans l'exercice précédent sera appliqué entre chaque deux gares successives. Pour cela nous faisons les modifications suivantes:
+
+#### Question 4.2 : Ajout d'un nouvel invariant de sûreté pour éviter un interblocage si la gare intermédiaire a n places et qu’il y a n + 2 trains.
+
+
+#### Question 4.3 :
+Voir code Gare-Intermediaire.zip
 
