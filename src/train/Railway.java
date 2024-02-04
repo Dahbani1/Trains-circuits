@@ -2,8 +2,9 @@ package train;
 
 
 /**
- * Représentation d'un circuit constitué d'éléments de voie ferrée : gare ou
- * section de voie
+ * The Railway class represents a circuit made up of railway elements: station or railway section.
+ * It contains an array of Elements that make up the railway, an array of Stations on the railway,
+ * the direction of the railway, and the number of trains on the railway.
  * 
  * @author Fabien Dagnat <fabien.dagnat@imt-atlantique.fr>
  * @author Philippe Tanguy <philippe.tanguy@imt-atlantique.fr>
@@ -14,6 +15,12 @@ public class Railway {
 	public Direction railwayDirection;
 	public int railwayTrains;
 
+	/**
+	 * Constructor of the Railway class. Initializes the Railway with an array of Elements and an array of Stations.
+	 * @param elements The array of Elements that make up the railway.
+	 * @param stations The array of Stations on the railway.
+	 * @throws NullPointerException if the array of Elements is null.
+	 */
 	public Railway(Element[] elements, Station[] stations) {
 		if(elements == null)
 			throw new NullPointerException();
@@ -26,6 +33,10 @@ public class Railway {
 		this.stations=stations;
 	}
 
+	/**
+	 * Returns a string representation of the Railway.
+	 * @return A string representation of the Railway.
+	 */
 	@Override
 	public String toString() {
 		StringBuilder result = new StringBuilder();
@@ -40,6 +51,11 @@ public class Railway {
 		return result.toString();
 	}
 	
+	/**
+	 * Returns the next Element in the given Position.
+	 * @param pos The Position to check.
+	 * @return The next Element in the Position.
+	 */
 	public Element nextElement(Position pos) {
 		Element currElement = pos.getElement();
 		Direction currDirection = pos.getDirection();
@@ -66,6 +82,11 @@ public class Railway {
 		return null;
 	}
 	
+	/**
+	 * Returns the next Station after the given Station.
+	 * @param stat The Station to check.
+	 * @return The next Station after the given Station.
+	 */
 	public Station nextStation(Station stat) {
 		int a =0;
 		for (int i = 0; i <= this.stations.length-1; i++) {
@@ -80,6 +101,11 @@ public class Railway {
 		
 	}
 	
+	/**
+	 * Returns the next Station in the given Position.
+	 * @param pos The Position to check.
+	 * @return The next Station in the Position.
+	 */
 	public Station nextStation(Position pos) {
 			
 			Element currElement = pos.getElement();

@@ -1,9 +1,20 @@
 package train;
 
 /**
+ * The Main class is the entry point of the application. It creates a railway with stations and sections,
+ * and then creates and starts trains on this railway.
+ * 
  * @author Fabien Dagnat <fabien.dagnat@imt-atlantique.fr>
  */
 public class Main {
+	/**
+	 * The main method of the application.
+	 * It creates a railway with two stations (A and D) and three sections (AB, BC, CD).
+	 * Then it creates three trains and starts them on the railway from station A in the left to right direction.
+	 * If a train is in a bad position, it catches the BadPositionForTrainException and prints an error message.
+	 * 
+	 * @param args Command line arguments. Not used in this application.
+	 */
 	public static void main(String[] args) {
 
 		Station A = new Station("GareA", 3, 3);
@@ -17,21 +28,6 @@ public class Main {
 		System.out.println("\t" + r);
 		Position p = new Position(A, Direction.LR);
 		try {
-
-			
-
-//			Train t1 = new Train("1", p);
-//			Train t2 = new Train("2", p);
-//			Train t3 = new Train("3", p);
-//			System.out.println(t1);
-//			System.out.println(t2);
-//			System.out.println(t3);
-//			Thread tr1=new Thread(t1);
-//			Thread tr2=new Thread(t2);
-//			Thread tr3=new Thread(t3);
-//			tr1.start();
-//			tr2.start();
-//			tr3.start();
 		    for (int i = 1; i <= 3; i++) {
 		        Train t = new Train(Integer.toString(i), p);
 		        System.out.println(t);
