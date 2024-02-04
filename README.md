@@ -32,12 +32,9 @@ Une explication détaillée des classes et de leurs rôles dans le contexte du d
 3. **Train :**
    - **Attributs :**
      - `name: String` - Le nom du train.
-     - `currentPosition: Position` - La position actuelle du train sur la ligne.
    - **Méthodes :**
      - `Train(String, Position)` - Constructeur pour créer une instance de la classe avec le nom et la position initiale spécifiés.
      - `toString(): String` - Une méthode qui retourne une représentation textuelle de l'objet Train.
-     - `moveForward(): void` - Méthode pour déplacer le train vers l'avant sur la ligne.
-     - `moveBackward(): void` - Méthode pour déplacer le train vers l'arrière sur la ligne.
 
    - **Rôle :** Représente un train sur la ligne de chemin de fer. Gère sa position actuelle et permet de le déplacer dans les deux sens.
 
