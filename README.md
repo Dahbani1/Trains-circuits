@@ -142,4 +142,7 @@ Explication: Comme expliqué au dessus, la méthode notifyTrains principalement 
 En utilisant la méthode de construction d'une solution de synchronisation avec des moniteurs, cette condition a été dans la méthode redéfinie "notifyTrain" de la classe Station.
 
 ### Question 3.5 : Test de la solution  =>soulèvement d'une nouvelle invariante de sureté
-Voir V3.zip. Cependant, nous vous recommendons de voir une deuxième version du code traitant cette partie d'interblocage
+Voir V3.zip. Cependant, nous vous recommendons de voir une deuxième version du code dans le package src/train traitant cette partie d'interblocage.
+En effet, après le test de cette solution, nous avons remarqué si nous avons des gares de tailles différentes, nous pouvons arriver dans une situation d’interblocage (deadlock). Pour mieux comprendre la situation, voici un exemple: 
+Soient deux gares A et D de tailles respectives 4 et 2. La ligne enetre ces deux gares contients trois sections AB, BC, CD.
+Trois trains sont initialement dans la gare A. La gare D est vide. Deux trains partent de la gare A à la gare D. La gare D est désormais pleine. Le troixième trains sort de la gare A dirigé vers la gare D. A son arrivée à la section CD, il se trouve dans une situation de blocage car aucune place n'est libre dans la gare d'arrivée D. Les deux autres trains occuppant la gare D ne peuvent pas bouger aussi car ils attendent  la libération de leurs nextElement (la section CD). On se retrouve dans une situation d'inter-blocage.
