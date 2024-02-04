@@ -123,21 +123,23 @@ Voir Code V2.zip
 #### Question 3.1 : Identifiez les variables qui permettent d’exprimer la nouvelle condition.
 
 Les variables qui permettent d’exprimer la nouvelle condition peuvent inclure :
-- Une liste des sections occupées par des trains dans un sens.
-- Une liste des sections occupées par des trains dans l'autre sens.
+-Le sens de circulation de la ligne "railway", en effet la ligne aura un seul sens de circulation, tous les trains qui sont en dehors des gares ont la meme directions. Exemple: Deux trains circulant dans la direction (left to right) de la gare A vers la gare D. La direction de ligne est donc LR. En parallèle, un train est pret à sortir de la gare D vers la gare A (right to left), son mouvement sera alors bloqué attendant l'arrivée de tous les trains à la gare d'arrivée et la libération de la ligne . A son mouvement, la dirction de la ligne devient RL et empeche alors toute sortie de train de la gare A. Lorsque la ligne est vide, la direction devient null.
 
 #### Question 3.2 : À l’aide des nouvelles variables, identifiez la nouvelle condition pour l’invariant de sûreté.
 
 La nouvelle condition pour l'invariant de sûreté pourrait être formulée comme suit :
 - Aucune section de ligne ne peut être occupée par plus d'un train à la fois.
 - Dans une gare, le nombre de trains maximum est égal au nombre de quais disponibles.
-- Si un train est dans une section, aucun train dans le sens opposé ne peut entrer dans une section qui serait sa destination.
+- Si au moins train est dans une section de la ligne, aucun train dans le sens opposé ne peut sortir de sa gare.
 
 #### Question 3.3 : Quelle est la classe responsable de la gestion de ces variables ?
 
-La classe responsable de la gestion de ces nouvelles variables pourrait être la classe de gestion de la synchronisation, par exemple `SynchronisationManager`.
+La classe responsable de la gestion de ces nouvelles variables est la classe de gestion de la synchronisation: Element, Section, Station.
+Explication: Comme expliqué au dessus, la méthode notifyTrains principalement dans la classe Station permet un train de quitter la gare à condition que l'invariant de sureté soit vérifié (condition: pas de train circulant dans le sens opposé).
 
 #### Question 3.4 : Utilisez la méthode de construction d’une solution de synchronisation présentée dans l’exercice précédent pour tenir compte de cette nouvelle condition.
 
-En utilisant la méthode de construction d'une solution de synchronisation avec des moniteurs, vous pouvez ajouter des méthodes synchronisées à la classe `SynchronisationManager` pour gérer les nouvelles conditions d'invariant de sûreté. Par exemple :
+En utilisant la méthode de construction d'une solution de synchronisation avec des moniteurs, cette condition a été dans la méthode redéfinie "notifyTrain" de la classe Station.
 
+### Question 3.5 : Test de la solution  =>soulèvement d'une nouvelle invariante de sureté
+Voir V3.zip. Cependant, nous vous recommendons de voir une deuxième version du code traitant cette partie d'interblocage
