@@ -83,9 +83,9 @@ Voir code (V1.zip)
 #### Question 2.2 : Identifiez les variables qui permettent d’exprimer l’invariant de sûreté pour la ligne de trains.
 
 Les variables qui permettent d’exprimer l’invariant de sûreté pour la ligne de trains pourraient inclure :
-- Liste de trains en déplacement
-- État de chaque section de ligne
-- État de chaque quai dans chaque gare
+- Nombre de trains dans un élément (section, station)
+- La taille de chaque section de ligne (taille d'une section=1)
+- La taille d'une station (nombre de quais disponibles = n initialisé au moment de la constrictuon d'un objet de type classe)
 
 #### Question 2.3 : À l’aide des variables identifiées, exprimez l’invariant de sûreté.
 
@@ -96,22 +96,25 @@ L'invariant de sûreté pourrait être exprimé comme suit :
 #### Question 2.4 : Quelles sont les actions « critiques » que peut effectuer un train ?
 
 Les actions critiques sont les méthodes qui modifient l'état des variables qui représentent l'invariant de sûreté. Dans ce cas, les méthodes critiques incluraient :
-- Arriver à une section de ligne
-- Quitter une section de ligne
-- Arriver à une gare
-- Quitter une gare
+- Arriver à une section de ligne (classe Element /méthode allowTrain ie laisser le train entrer si la condition est satisfaite cad la section est vide)
+- Quitter une section de ligne (classe Element / méthode notifyTrain ie un train est sorti d'une section et tous est informé que cette section est vide est disponible)
+- Arriver à une gare (classe Station (hérité de Element / méthode allowTrain redéfinie ie laisser le train entre s'il reste encore une place dans la gare)
+- Quitter une gare (classe Element / méthode notifyTrain ie un train est sorti d'une section et tous est informé qu'une place de plus est disponible dans cette gare (le nombre de trains dans cette gare diminue par 1))
 
 #### Question 2.5 : Dans quelles classes ces actions doivent être ajoutées ?
 
-Les actions critiques doivent être ajoutées à la classe qui représente le train. Chaque train doit être capable de gérer son mouvement, son arrivée dans une gare, etc.
+Les actions critiques (allowTrain, notifyTrains) doivent être ajoutées à la classe qui représente l' Element (Section, Station). Chaque élément de la ligne doit  être capable de gérer ses entrées et ses sorties et mettre à  jour son état à chaque passage d'un train.
+
+Les actions critiques (arrivée et sortie du trains) doivent être ajoutées à la classe qui représente Train. Ces actions sont définies tous par une méthode "move" responsable du mouvement du Train Chaque élément de la ligne doit  être capable de gérer ses entrées et ses sorties et mettre à  jour son état à chaque passage d'un train, son arrivée dans une gare, sa sortie etc.
 
 #### Question 2.6 : Selon la méthode de construction d’une solution de synchronisation donnée plus haut, quelles autres méthodes faut-il ajouter et dans quelle classe ?
 
-Selon la méthode donnée, vous devrez ajouter des méthodes dans la classe qui gère la synchronisation entre les trains. Ces méthodes devraient inclure des méthodes qui vérifient si l'invariant de sûreté est toujours satisfait après une action critique.
+Nous devons obligatoirement et principalement ajouter des méthodes dans la classe qui gère la synchronisation entre les trains. Dans notre cas on parle de la classe Element et ses classes héritées (Station, Section). Ces méthodes devraient inclure des méthodes qui vérifient si l'invariant de sûreté est toujours satisfait après une action critique.
+
+Ces méthodes sont par la suite utilisé dans la méthode move de la classe Train, ce qui permet au train d'être capable de gérer son mouvement, son arrivée dans une gare, etc.
 
 #### Question 2.7 : Ajoutez les méthodes identifiées dans les classes correspondantes.
 
-En fonction de la structure actuelle de votre code, ajoutez les méthodes synchronisées dans la classe Train et dans une classe de gestion de la synchronisation. N'oubliez pas d'adapter cela en fonction de la structure réelle de votre code.
 Voir Code V2.zip
 
 
