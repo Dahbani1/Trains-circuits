@@ -71,6 +71,7 @@ Une explication détaillée des classes et de leurs rôles dans le contexte du d
    - **Rôle :** Représente une gare avec plusieurs quais. La taille indique le nombre de trains que la gare peut accueillir simultanément.
 
 ### Question 1.2 : Le diagramme de classe modifié:
+<img src="Diagramme de classe.drawio (2).png" alt="Diagramme de classe modifié">
 
 
 ### Question 1.3 : Code
