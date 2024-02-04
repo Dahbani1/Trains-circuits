@@ -20,9 +20,9 @@ public class Main {
 		Station A = new Station("GareA", 3, 3);
 		Station D = new Station("GareD", 2, 0);
 
-		Section AB = new Section("AB");
-		Section BC = new Section("BC");
-		Section CD = new Section("CD");
+		Section AB = new Section("AB   ");
+		Section BC = new Section("BC   ");
+		Section CD = new Section("CD   ");
 		Railway r = new Railway(new Element[] { A, AB, BC, CD, D }, new Station[] { A, D });
 		System.out.println("The railway is:");
 		System.out.println("\t" + r);
