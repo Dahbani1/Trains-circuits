@@ -5,10 +5,10 @@ _Groupe composé de Mohammed Dahbani, Anas Ezzakri
 Ce projet s'inscrit dans le cadre du cours sur les logiciels concurrents. Il consiste en la modélisation en Java du déplacement de trains sur des rails.
 - Éditeur utilisé : `XXX (au choix)`
 
-## Réponses aux questions
+## Partie 1: Le comportement d'un train
 
 ### Question 1.1
-Bien sûr, voici une explication détaillée des classes et de leurs rôles dans le contexte du déplacement des trains sur une ligne de chemin de fer :
+Une explication détaillée des classes et de leurs rôles dans le contexte du déplacement des trains sur une ligne de chemin de fer :
 
 1. **Railway :**
    - **Attributs :**
@@ -74,7 +74,12 @@ Bien sûr, voici une explication détaillée des classes et de leurs rôles dans
    - **Rôle :** Représente une gare avec plusieurs quais. La taille indique le nombre de trains que la gare peut accueillir simultanément.
 
 ### Question 1.2
-Réponse
-### Question 1.3
+Le diagramme de classe modifié:
 
-etc...
+### Question 1.3
+Voir code (V1.zip)
+
+## Partie 2: Plusieurs trains sur la ligne
+
+### Question 2.1
+etc..
