@@ -141,8 +141,24 @@ Explication: Comme expliqué au dessus, la méthode notifyTrains principalement 
 
 En utilisant la méthode de construction d'une solution de synchronisation avec des moniteurs, cette condition a été dans la méthode redéfinie "notifyTrain" de la classe Station.
 
-### Question 3.5 : Test de la solution  =>soulèvement d'une nouvelle invariante de sureté
-Voir V3.zip. Cependant, nous vous recommendons de voir une deuxième version du code dans le package src/train traitant cette partie d'interblocage.
+#### Question 3.5 : Test de la solution  =>soulèvement d'une nouvelle invariante de sureté
+Voir V3.zip. 
+Cependant, nous vous recommendons de voir une deuxième version du code dans le package src/train traitant cette partie d'interblocage.
 En effet, après le test de cette solution, nous avons remarqué si nous avons des gares de tailles différentes, nous pouvons arriver dans une situation d’interblocage (deadlock). Pour mieux comprendre la situation, voici un exemple: 
 Soient deux gares A et D de tailles respectives 4 et 2. La ligne enetre ces deux gares contients trois sections AB, BC, CD.
 Trois trains sont initialement dans la gare A. La gare D est vide. Deux trains partent de la gare A à la gare D. La gare D est désormais pleine. Le troixième trains sort de la gare A dirigé vers la gare D. A son arrivée à la section CD, il se trouve dans une situation de blocage car aucune place n'est libre dans la gare d'arrivée D. Les deux autres trains occuppant la gare D ne peuvent pas bouger aussi car ils attendent  la libération de leurs nextElement (la section CD). On se retrouve dans une situation d'inter-blocage.
+
+La nouvelle condition pour l'invariant de sûreté pourrait être formulée comme suit :
+- Aucune section de ligne ne peut être occupée par plus d'un train à la fois.
+- Dans une gare, le nombre de trains maximum est égal au nombre de quais disponibles.
+- Si au moins train est dans une section de la ligne, aucun train dans le sens opposé ne peut sortir de sa gare.
+- S'il n y aurait pas de places libres dans sa gare de destination à son arrivée à la section qui précède cette gare, le train ne peut pas sortir de sa gare.
+
+La classe responsable de la gestion de ces nouvelles variables est la classe de gestion de la synchronisation: Station.
+Explication: Comme expliqué au dessus, la méthode notifyTrains principalement dans la classe Station permet un train de quitter la gare à condition que l'invariant de sureté soit vérifié (ici la condition devient : pas de train circulant dans le sens opposé, et il y aura une place libre dans la gare de destination à son arrivée, pour cela nous augmentons le nombre de train qui occupe la gare au moment de sortie d'un train de la gare opposée pas jusqu'à son arrivée).
+
+##### Remarque:
+
+##### Code: Voir code src/train
+
+
