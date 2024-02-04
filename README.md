@@ -108,9 +108,9 @@ Les actions critiques (arrivée et sortie du trains) doivent être ajoutées à 
 
 #### Question 2.6 : Selon la méthode de construction d’une solution de synchronisation donnée plus haut, quelles autres méthodes faut-il ajouter et dans quelle classe ?
 
-Nous devons obligatoirement et principalement ajouter des méthodes dans la classe qui gère la synchronisation entre les trains. Dans notre cas on parle de la classe Element et ses classes héritées (Station, Section). Ces méthodes devraient inclure des méthodes qui vérifient si l'invariant de sûreté est toujours satisfait après une action critique.
+Nous devons obligatoirement et principalement ajouter des méthodes dans la classe qui gère la synchronisation entre les trains. Dans notre cas on parle de la classe Element et ses classes héritées (Station, Section). Ces classes devraient inclure des méthodes qui vérifient si la condition de l'invariant de sûreté est toujours satisfaite après une action critique.
 
-Ces méthodes sont par la suite utilisé dans la méthode move de la classe Train, ce qui permet au train d'être capable de gérer son mouvement, son arrivée dans une gare, etc.
+Ces méthodes sont par la suite utilisées dans la méthode move de la classe Train, ce qui permet au train d'être capable de gérer son mouvement, son arrivée dans une gare, etc.
 
 #### Question 2.7 : Ajoutez les méthodes identifiées dans les classes correspondantes.
 
@@ -138,15 +138,15 @@ Explication: Comme expliqué au dessus, la méthode notifyTrains principalement 
 
 #### Question 3.4 : Utilisez la méthode de construction d’une solution de synchronisation présentée dans l’exercice précédent pour tenir compte de cette nouvelle condition.
 
-En utilisant la méthode de construction d'une solution de synchronisation avec des moniteurs, cette condition a été dans la méthode redéfinie "notifyTrain" de la classe Station.
+En utilisant la méthode de construction d'une solution de synchronisation avec des moniteurs, cette condition a été exprimée dans la méthode redéfinie "notifyTrain" de la classe Station.
 
 #### Question 3.5 : Test de la solution  =>soulèvement d'une nouvelle invariante de sureté
 Voir V3.zip. 
 
-Cependant, nous vous recommendons de voir une deuxième version du code dans le package src/train traitant cette partie d'interblocage.
-En effet, après le test de cette solution, nous avons remarqué si le nombre de trains dépasse la taille d'une gare., nous pouvons arriver dans une situation d’interblocage (deadlock). Pour mieux comprendre la situation, voici un exemple: 
-Soient deux gares A et D de tailles respectives 4 et 2. La ligne enetre ces deux gares contients trois sections AB, BC, CD.
-Trois trains sont initialement dans la gare A. La gare D est vide. Deux trains partent de la gare A à la gare D. La gare D est désormais pleine. Le troixième trains sort de la gare A dirigé vers la gare D. A son arrivée à la section CD, il se trouve dans une situation de blocage car aucune place n'est libre dans la gare d'arrivée D. Les deux autres trains occuppant la gare D ne peuvent pas bouger aussi car ils attendent  la libération de leurs nextElement (la section CD). On se retrouve dans une situation d'inter-blocage.
+Cependant, nous vous recommendons de voir la deuxième version du code dans le package src/train traitant cette partie d'interblocage.
+En effet, après le test de cette solution, nous avons remarqué que si le nombre de trains dépasse la taille d'une gare., nous pouvons arriver dans une situation d’interblocage (deadlock). Pour mieux comprendre la situation, voici un exemple: 
+Soient deux gares A et D de tailles respectives 4 et 2. La ligne entre ces deux gares contient trois sections AB, BC, CD.
+Trois trains sont initialement dans la gare A. La gare D est vide. Deux trains partent de la gare A à la gare D. La gare D est désormais pleine. Le troixième train sort de la gare A dirigé vers la gare D. A son arrivée à la section CD, il se trouve dans une situation de blocage car aucune place n'est libre dans la gare d'arrivée D. Les deux autres trains occuppant la gare D ne peuvent pas bouger aussi car ils attendent  la libération de leurs nextElement (la section CD). On se retrouve dans une situation d'inter-blocage.
 
 La nouvelle condition pour l'invariant de sûreté pourrait être formulée comme suit :
 - Aucune section de ligne ne peut être occupée par plus d'un train à la fois.
@@ -155,9 +155,7 @@ La nouvelle condition pour l'invariant de sûreté pourrait être formulée comm
 - S'il n y aurait pas de places libres dans sa gare de destination à son arrivée à la section qui précède cette gare, le train ne peut pas sortir de sa gare.
 
 La classe responsable de la gestion de ces nouvelles variables est la classe de gestion de la synchronisation: Station.
-Explication: Comme expliqué au dessus, la méthode notifyTrains principalement dans la classe Station permet un train de quitter la gare à condition que l'invariant de sureté soit vérifié (ici la condition devient : pas de train circulant dans le sens opposé, et il y aura une place libre dans la gare de destination à son arrivée, pour cela nous augmentons le nombre de train qui occupent la gare au moment de sortie d'un train de la gare opposée pas jusqu'à son arrivée).
-
-##### Remarque:
+Explication: Comme expliqué au dessus, la méthode notifyTrains principalement dans la classe Station permet un train de quitter la gare à condition que l'invariant de sureté soit vérifié (ici la condition devient : pas de train circulant dans le sens opposé, et il y aura une place libre dans la gare de destination à son arrivée, pour cela nous augmentons le nombre de train qui occupent la gare au moment de sortie d'un train de la gare opposée, pas jusqu'à son arrivée).
 
 ##### Code: Voir code src/train
 
@@ -170,7 +168,7 @@ Une telle gare permet à des trains de se croiser.
 Voir code Gare-Intermediaire.zip
 
 **Ajout de la classe StationIntermediaire :**
-   - Créeation d'une nouvelle classe `StationInter` qui étend la classe `Station`. Cette classe hérite les memes methodes dela classe 'Station', nous pouvons dire que la station intermédiaire se comporte comme une section à plusieurs quai, cad le train ne tourne pas (ne change pas de direction) à son arrivée à ces gares intermédiaire (comme les sections), mais ces gares peuvent aussi acceuillir plusieurs trains selon le nombre de quai.
+   - Création d'une nouvelle classe `StationInter` qui étend la classe `Station`. Cette classe hérite les memes méthodes de la classe 'Station', nous pouvons dire que la station intermédiaire se comporte comme une section à plusieurs quais, c-à-d le train ne tourne pas (ne change pas de direction) à son arrivée à ces gares intermédiaire (comme les sections), mais ces gares peuvent aussi acceuillir plusieurs trains selon le nombre de quais.
    
 Le meme principe appliqué  entre deux gares dans l'exercice précédent sera appliqué entre chaque deux gares successives. Pour cela nous faisons les modifications suivantes:
 
@@ -193,5 +191,5 @@ Le meme invariant de sureté exprimé dans l'exercice 3 doit etre vérifié entr
 - S'il n y aurait pas de places libres dans sa prochaine gare de destination à son arrivée à la section qui précède cette gare, le train ne peut pas sortir de sa gare actuelle.
 
 #### Question 4.3 :
-Voir code Gare-Intermediaire.zip
+Voir code Pour aller plus loin (Gare-Intermediaire).zip
 
