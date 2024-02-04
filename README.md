@@ -72,6 +72,7 @@ Une explication détaillée des classes et de leurs rôles dans le contexte du d
 
 ### Question 1.2 : Le diagramme de classe modifié:
 
+
 ### Question 1.3 : Code
 Voir code (V1.zip)
 
