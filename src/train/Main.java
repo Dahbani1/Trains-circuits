@@ -28,12 +28,12 @@ public class Main {
 		System.out.println("\t" + r);
 		Position p = new Position(A, Direction.LR);
 		try {
-		    for (int i = 1; i <= 3; i++) {
-		        Train t = new Train(Integer.toString(i), p);
-		        System.out.println(t);
-		        Thread tr = new Thread(t);
-		        tr.start();
-		    }
+			for (int i = 1; i <= 3; i++) {
+				Train t = new Train(Integer.toString(i), p);
+				System.out.println(t);
+				Thread tr = new Thread(t);
+				tr.start();
+			}
 
 		} catch (BadPositionForTrainException e) {
 			System.out.println("Le train " + e.getMessage());

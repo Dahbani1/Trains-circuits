@@ -8,7 +8,7 @@ package train;
  * @author Philippe Tanguy <philippe.tanguy@imt-atlantique.fr>
  */
 public class Section extends Element {
-	
+
 	/**
 	 * Constructor of the Section class. Initializes the Section with a name.
 	 * The size is set to 1, indicating that the Section can only hold one train at a time.

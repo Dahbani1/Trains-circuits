@@ -54,7 +54,7 @@ public class Position implements Cloneable {
 	public Element getElement() {
 		return element;
 	}
-	
+
 	/**
 	 * Returns the Direction of the Position.
 	 * @return The Direction of the Position.
@@ -74,7 +74,7 @@ public class Position implements Cloneable {
 		result.append(this.direction);
 		return result.toString();
 	}
-	
+
 	/**
 	 * Sets the Element of the Position.
 	 * @param elt The Element to be set.
@@ -82,7 +82,7 @@ public class Position implements Cloneable {
 	public void setElement(Element elt) {
 		this.element = elt;	
 	}
-	
+
 	/**
 	 * Sets the Direction of the Position.
 	 * @param d The Direction to be set.
@@ -90,7 +90,7 @@ public class Position implements Cloneable {
 	public void setDirection(Direction d) {
 		this.direction = d;	
 	}
-	
+
 	/**
 	 * Turns the Direction of the Position to the opposite direction.
 	 */

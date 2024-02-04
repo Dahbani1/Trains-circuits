@@ -21,21 +21,7 @@ public class Station extends Element {
 		if(name == null || size <=0)
 			throw new NullPointerException();
 	}
-	
-	
-	
-//	@Override
-//	public synchronized void allowTrain(Train t) {
-//		while (this.isFull()) {
-//			try {
-//				wait();
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		t.moveToNextElement();
-//	}
-	
+
 	/**
 	 * Checks if the Station is full. For the Station class, this method always returns false.
 	 * @return False, indicating that the Station is not full.
@@ -44,7 +30,7 @@ public class Station extends Element {
 	public boolean isFull() {
 		return false;
 	}
-	
+
 	/**
 	 * Checks if the Station will be full after adding one more train.
 	 * @return True if the Station will be full, false otherwise.
@@ -52,7 +38,7 @@ public class Station extends Element {
 	public boolean willBeFull() {
 		return this.getTrains() == this.getSize();
 	}
-	
+
 	/**
 	 * Notifies the trains in the Station and updates their Position.
 	 * If the railway direction is not null and not the same as the train direction, or the next station will be full, it waits.
@@ -75,7 +61,7 @@ public class Station extends Element {
 		this.nextStation(t.getPosition()).incrementTrains();
 		notifyAll();
 	}
-	
+
 	/**
 	 * Allows a Train to enter the Station if it is not full.
 	 * @param t The Train to be allowed.
@@ -89,7 +75,7 @@ public class Station extends Element {
 				e.printStackTrace();
 			}
 		}
-		
+
 		this.railway.railwayTrains--;
 		this.railway.railwayDirection = this.railway.railwayTrains==0 ? null : this.railway.railwayDirection;
 		notifyAll();

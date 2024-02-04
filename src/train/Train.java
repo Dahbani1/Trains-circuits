@@ -50,7 +50,7 @@ public class Train implements Runnable {
 		result.append(this.pos);
 		return result.toString();
 	}
-	
+
 	/**
 	 * Returns the Element of the Train's Position.
 	 * @return The Element of the Train's Position.
@@ -58,7 +58,7 @@ public class Train implements Runnable {
 	public Element getElement() {
 		return this.pos.getElement();
 	}
-	
+
 	/**
 	 * Returns the Position of the Train.
 	 * @return The Position of the Train.
@@ -66,7 +66,7 @@ public class Train implements Runnable {
 	public Position getPosition() {
 		return this.pos;
 	}
-	
+
 	/**
 	 * Returns the next Element in the Train's Position.
 	 * @return The next Element in the Train's Position.
@@ -74,7 +74,7 @@ public class Train implements Runnable {
 	public Element nextElement() {
 		return this.getElement().nextElement(pos);
 	}
-	
+
 	/**
 	 * Moves the Train to the next Element in its Position.
 	 */
@@ -85,7 +85,7 @@ public class Train implements Runnable {
 		currElement.notifyTrains(this);
 		System.out.println("\n"+this);
 	}
-	
+
 	/**
 	 * The run method of the Runnable interface. It continuously moves the Train and then makes it sleep for 1 millisecond.
 	 */
@@ -93,7 +93,7 @@ public class Train implements Runnable {
 		while(true) {
 			this.move();
 			try {
-			    Thread.sleep(1);
+				Thread.sleep(1);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
