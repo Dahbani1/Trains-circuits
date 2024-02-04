@@ -3,7 +3,7 @@ _Groupe composé de Mohammed Dahbani, Anas Ezzakri
 
 ## Introduction
 Ce projet s'inscrit dans le cadre du cours sur les logiciels concurrents. Il consiste en la modélisation en Java du déplacement de trains sur des rails.
-- Éditeur utilisé : `XXX (au choix)`
+
 
 ## Partie 1: Le comportement d'un train
 
