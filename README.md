@@ -161,4 +161,7 @@ Explication: Comme expliqué au dessus, la méthode notifyTrains principalement 
 
 ##### Code: Voir code src/train
 
+## Partie 4: Pour aller plus loin (Ajout de n gares intermédiaires)
+
+
 
